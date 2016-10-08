@@ -1,27 +1,14 @@
 import pygame
 class backgroundOb:
+    image = []
+    loadedImgs = False
     def __init__(self, xCord, yCord, x):
         self.cord = (xCord, yCord)
         self.passable = True
-        self.image = [ pygame.Surface(self.size).convert(), pygame.Surface(self.size).convert(), pygame.Surface(self.size).convert(), pygame.Surface(self.size).convert(),pygame.Surface(self.size).convert(),pygame.Surface(self.size).convert(),pygame.Surface(self.size).convert(),pygame.Surface(self.size).convert(),pygame.Surface(self.size).convert(), pygame.Surface(self.size).convert(), pygame.Surface(self.size).convert(), pygame.Surface(self.size).convert(),pygame.Surface(self.size).convert(), pygame.Surface(self.size).convert(), pygame.Surface(self.size).convert()]
-        self.image[0].blit(pygame.image.load("grass.bmp"), (0,0))
-        self.image[1].blit(pygame.image.load("water.bmp"), (0,0))
-        self.image[2].blit(pygame.image.load("tallGrass.bmp"), (0,0))
-        self.image[3].blit(pygame.image.load("path.bmp"), (0, 0))
-
-
-        self.image[4].blit(pygame.image.load("wall01.bmp"), (0,0))
-        self.image[5].blit(pygame.image.load("wall02.bmp"), (0,0))
-        self.image[6].blit(pygame.image.load("wall05.bmp"), (0,0))
-        self.image[7].blit(pygame.image.load("shrubbery.bmp"), (0,0))
-
-        self.image[8].blit(pygame.image.load("roof.bmp"), (0,0))
-        self.image[9].blit(pygame.image.load("roof2.bmp"), (0,0))
-        self.image[10].blit(pygame.image.load("roof3.bmp"), (0,0))
-        self.image[11].blit(pygame.image.load("door.bmp"), (0,0))
-        self.image[12].blit(pygame.image.load("rock.bmp"), (0,0))
-        self.image[13].blit(pygame.image.load("bridge.bmp"), (0,0))
-        self.image[14].blit(pygame.image.load("bridge02.bmp"), (0,0))
+        self.size = (32, 32)
+        if (backgroundOb.loadedImgs == False):
+            self.loadImages()
+            backgroundOb.loadedImgs = True
 
         
         if (x == '0'):
@@ -76,3 +63,23 @@ class backgroundOb:
          return True
     def isPassable(self):
         return self.passable
+    def loadImages(self):
+        backgroundOb.image = [ pygame.Surface(self.size).convert(), pygame.Surface(self.size).convert(), pygame.Surface(self.size).convert(), pygame.Surface(self.size).convert(),pygame.Surface(self.size).convert(),pygame.Surface(self.size).convert(),pygame.Surface(self.size).convert(),pygame.Surface(self.size).convert(),pygame.Surface(self.size).convert(), pygame.Surface(self.size).convert(), pygame.Surface(self.size).convert(), pygame.Surface(self.size).convert(),pygame.Surface(self.size).convert(), pygame.Surface(self.size).convert(), pygame.Surface(self.size).convert()]
+        backgroundOb.image[0].blit(pygame.image.load("grass.bmp"), (0,0))
+        backgroundOb.image[1].blit(pygame.image.load("water.bmp"), (0,0))
+        backgroundOb.image[2].blit(pygame.image.load("tallGrass.bmp"), (0,0))
+        backgroundOb.image[3].blit(pygame.image.load("path.bmp"), (0, 0))
+
+
+        backgroundOb.image[4].blit(pygame.image.load("wall01.bmp"), (0,0))
+        backgroundOb.image[5].blit(pygame.image.load("wall02.bmp"), (0,0))
+        backgroundOb.image[6].blit(pygame.image.load("wall05.bmp"), (0,0))
+        backgroundOb.image[7].blit(pygame.image.load("shrubbery.bmp"), (0,0))
+
+        backgroundOb.image[8].blit(pygame.image.load("roof.bmp"), (0,0))
+        backgroundOb.image[9].blit(pygame.image.load("roof2.bmp"), (0,0))
+        backgroundOb.image[10].blit(pygame.image.load("roof3.bmp"), (0,0))
+        backgroundOb.image[11].blit(pygame.image.load("door.bmp"), (0,0))
+        backgroundOb.image[12].blit(pygame.image.load("rock.bmp"), (0,0))
+        backgroundOb.image[13].blit(pygame.image.load("bridge.bmp"), (0,0))
+        backgroundOb.image[14].blit(pygame.image.load("bridge02.bmp"), (0,0))
