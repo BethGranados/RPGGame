@@ -8,13 +8,14 @@ from backgroundObj import *
 class level01:
     def mainLoop(self):
         self.scene = gameViewObj()
-        self.sceneCopy = gameViewObj()
         levelDat = self.scene.loadLevel("town.txt")
-        self.nextState = 02
+        self.nextState = 01
         self.sceneList = []
         self.sceneAmnt = 0
         row = 0
         col = 0
+
+        #loads the game level.
         for count in range(0, len(levelDat)):
             if levelDat[count] == '\n':
                 row += 1
@@ -23,20 +24,22 @@ class level01:
                 self.sceneList.append(backgroundOb(col * 32, row * 32, levelDat[count]))
                 self.sceneAmnt +=1
                 col += 1
-        
+
+        #Loads the actors
         self.actorList = [player(900, 500), npc(300, 300)]
         self.amount = 2
         self.running = True
+
+        #Game loop
         while self.running:
             self.events()
             self.update()
             self.scene.render(self.sceneList, self.sceneAmnt)
             self.scene.render(self.actorList, self.amount)
-            self.sceneCopy.copy(self.scene)
             self.scene.flippingYouOff()
         return self.nextState
                     
-    
+    #All actions
     def events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -63,7 +66,7 @@ class level01:
                     self.actorList[0].changeDirY(0)
                 if event.key == pygame.K_UP:
                     self.actorList[0].changeDirY(0)
-            
+    #Make changes to all actors.   
     def update(self):
         for x in range(1, self.sceneAmnt):
             self.actorList[0].canMove(self.sceneList[x])

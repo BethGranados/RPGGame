@@ -1,4 +1,6 @@
 from actor import *
+
+#An NPC class. It does nothing special OnO
 class npc(actor):
     def __init__(self, xCord, yCord):
         actor.__init__(self,xCord, yCord)
